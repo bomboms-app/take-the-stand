@@ -84,3 +84,4 @@ The Tether QVAC SDK on-device AI app challenge.
 ## License
 
 MIT, see [LICENSE](LICENSE).
+Built for the Tether QVAC SDK app challenge.
