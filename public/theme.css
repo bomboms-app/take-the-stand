@@ -1,21 +1,22 @@
-/* Cross-Examine Me: Interrogation Room theme (dark noir + amber spotlight) */
+/* Take the Stand: violet courtroom theme */
 :root {
-  --bg: #0f1115;
-  --panel: #1a1d24;
-  --border: #2c313b;
-  --text: #e8e6e1;
-  --muted: #9a978f;
-  --amber: #f5b642;
+  --bg: #120d1f;
+  --panel: #1c1530;
+  --border: #3a2d5c;
+  --text: #ece8f5;
+  --muted: #a79fbe;
+  --accent: #a78bfa;
   --red: #e5484d;
 }
 
 html, body {
-  background: var(--bg) !important;
+  background: #120d1f linear-gradient(160deg, #1b1033 0%, #2a1650 100%) fixed !important;
   color: var(--text) !important;
+  min-height: 100%;
 }
 
-h1, h2, h3 { color: var(--amber) !important; }
-a { color: var(--amber) !important; }
+h1, h2, h3 { color: var(--accent) !important; }
+a { color: var(--accent) !important; }
 p, li, label, span { color: inherit; }
 small, .muted, [class*="hint"], [class*="sub"] { color: var(--muted) !important; }
 
@@ -25,23 +26,23 @@ small, .muted, [class*="hint"], [class*="sub"] { color: var(--muted) !important;
   border-color: var(--border) !important;
 }
 
-[class*="exhibit"] { border-left: 4px solid var(--amber) !important; }
+[class*="exhibit"] { border-left: 4px solid var(--accent) !important; }
 [class*="verdict"] { border: 2px solid var(--red) !important; background-color: var(--panel) !important; color: var(--text) !important; }
 
 input, textarea, select {
-  background: #12151b !important;
+  background: #160f27 !important;
   color: var(--text) !important;
-  border: 1px solid #3a3f4b !important;
+  border: 1px solid #4a3b73 !important;
 }
-input:focus, textarea:focus, select:focus { outline: 2px solid var(--amber) !important; }
+input:focus, textarea:focus, select:focus { outline: 2px solid var(--accent) !important; }
 
 button {
-  background: var(--amber) !important;
-  color: #1a1300 !important;
+  background: var(--accent) !important;
+  color: #140a2e !important;
   border: none !important;
   font-weight: 700;
   cursor: pointer;
 }
 button:hover { filter: brightness(1.1); }
 
-::selection { background: var(--amber); color: #1a1300; }
+::selection { background: var(--accent); color: #140a2e; }
