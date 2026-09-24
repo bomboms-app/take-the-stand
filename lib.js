@@ -120,22 +120,24 @@ export function verdictHistory(exhibits, claim) {
     {
       role: 'user',
       content:
-        `Journal excerpts:\n\n${evidenceText(exhibits)}\n\n` +
-        `The plan the user states today: "${claim}"\n\n` +
-        'Answer with exactly one word:\n' +
-        'PATTERN if the journal shows the user already struggled with, failed at, or regretted something similar.\n' +
-        'CONSISTENT if the plan matches lessons the journal says the user learned.\n' +
-        'UNCLEAR if the excerpts are not really about this plan.\n' +
-        '/no_think'
+        'Journal excerpts:\n\n' + evidenceText(exhibits) + '\n\n' +
+        'The plan the user states today: "' + claim + '"\n\n' +
+        'Decide how the journal relates to this plan. Answer with exactly one word.\n\n' +
+        'PATTERN: any excerpt shows the user tried something similar before and struggled, failed, regretted it, or warned themselves against it. ' +
+        'Choose PATTERN even if other excerpts sound hopeful or excited. Also choose PATTERN if the user keeps repeating the same plan or promise.\n' +
+        'CONSISTENT: the journal supports the plan (something similar went well, or the user wrote that it is the right move) and nothing in it warns against the plan.\n' +
+        'UNCLEAR: the excerpts are not really about this plan.\n\n' +
+        'Answer with one word: PATTERN, CONSISTENT or UNCLEAR. /no_think'
     }
   ];
 }
 
-// Picks whichever verdict word the model said first; anything else is "unclear".
+// Reads the verdict as a whole word, so "INCONSISTENT" is never read as "CONSISTENT".
 export function parseVerdict(text) {
   const up = String(text).toUpperCase();
+  if (/\bINCONSISTENT\b/.test(up)) return 'pattern';
   const found = ['PATTERN', 'CONSISTENT', 'UNCLEAR']
-    .map((k) => [k, up.indexOf(k)])
+    .map((k) => [k, up.search(new RegExp('\\b' + k + '\\b'))])
     .filter(([, i]) => i >= 0)
     .sort((a, b) => a[1] - b[1]);
   return found.length ? found[0][0].toLowerCase() : 'unclear';
