@@ -1,0 +1,47 @@
+/* Cross-Examine Me: Interrogation Room theme (dark noir + amber spotlight) */
+:root {
+  --bg: #0f1115;
+  --panel: #1a1d24;
+  --border: #2c313b;
+  --text: #e8e6e1;
+  --muted: #9a978f;
+  --amber: #f5b642;
+  --red: #e5484d;
+}
+
+html, body {
+  background: var(--bg) !important;
+  color: var(--text) !important;
+}
+
+h1, h2, h3 { color: var(--amber) !important; }
+a { color: var(--amber) !important; }
+p, li, label, span { color: inherit; }
+small, .muted, [class*="hint"], [class*="sub"] { color: var(--muted) !important; }
+
+[class*="card"], [class*="exhibit"], [class*="panel"], [class*="box"], [class*="entry"] {
+  background-color: var(--panel) !important;
+  color: var(--text) !important;
+  border-color: var(--border) !important;
+}
+
+[class*="exhibit"] { border-left: 4px solid var(--amber) !important; }
+[class*="verdict"] { border: 2px solid var(--red) !important; background-color: var(--panel) !important; color: var(--text) !important; }
+
+input, textarea, select {
+  background: #12151b !important;
+  color: var(--text) !important;
+  border: 1px solid #3a3f4b !important;
+}
+input:focus, textarea:focus, select:focus { outline: 2px solid var(--amber) !important; }
+
+button {
+  background: var(--amber) !important;
+  color: #1a1300 !important;
+  border: none !important;
+  font-weight: 700;
+  cursor: pointer;
+}
+button:hover { filter: brightness(1.1); }
+
+::selection { background: var(--amber); color: #1a1300; }

@@ -1,0 +1,6 @@
+node_modules/
+.qvac/
+.DS_Store
+# Your real journal should never be committed:
+notes-private/
+my-notes/
